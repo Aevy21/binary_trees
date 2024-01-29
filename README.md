@@ -9,6 +9,46 @@ Binary trees are hierarchical data structures composed of nodes, where each node
 
 - Each node in a binary tree contains a value (or payload) and references to its left and right children.
 
+### Root
+
+- The topmost node in a tree, serving as the starting point for traversal.
+
+### Parent
+
+- A node that has one or more child nodes.
+
+### Child
+
+- A node directly connected to another node when moving away from the root.
+
+### Leaf (or Terminal Node)
+
+- A node with no children, situated at the end of a branch.
+
+### Siblings
+
+- Nodes that share the same parent in a tree.
+
+### Ancestor
+
+- A node's ancestors are all the nodes on the path from the root to that node.
+
+### Descendant
+
+- A node's descendants are all the nodes below it in the tree.
+
+### Internal Node 
+The nodes with at least one child node are known as internal nodes. Every node (even the root node) is internal except the leaf nodes.
+
+### Path 
+A path between any two nodes of a tree is the sequence of connected nodes along with the edges between the two nodes. And the path length is the number of nodes present between two nodes.
+
+### Level
+The level in the tree represents the number of steps from the top/root. The root node of the tree is said to be at level 0, and as we go downwards the level increases
+
+### Edge
+The connecting link between the two nodes is known as the edges of the tree. It is also referred to as the branch of a tree. If there are n nodes in a binary tree, there will be a total of n-1 edges.
+
 ### Height
 
 - The height of a binary tree is the length of the longest path from the root to a leaf node. It influences the efficiency of tree operations.
