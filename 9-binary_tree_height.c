@@ -1,31 +1,39 @@
-#include "binary_trees.h"
 #include <stddef.h>
+#include "binary_trees.h"
 
 /**
  * binary_tree_height - Measures the height of a binary tree
- * @tree: Pointer to the root node of the tree
+ * @tree: Pointer to the root node of the tree to measure the height.
  *
- * Return: Height of the tree, 0 if tree is NULL or the node is a leaf
+ * Return: Height of the tree, 0 if tree is NULL
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	if (tree == NULL)
-		return (0);
+    size_t left_height = 0, right_height = 0, tree_height;
 
-	/* If the node is a leaf (no left or right child), return 0 */
-	if (tree->left == NULL && tree->right == NULL)
-		return (0);
+    /* Base case: if tree is NULL, return 0 */
+    if (tree == NULL)
+        return (0);
 
-	size_t left_height = binary_tree_height(tree->left);
-	size_t right_height = binary_tree_height(tree->right);
+    /* Recursive case: calculate the height of the left subtree */
+    if (tree->left != NULL)
+        left_height = 1 + binary_tree_height(tree->left);
+    else
+        left_height = 0;
 
-	/* Determine the maximum height between left and right subtrees plus 1 */
-	if (left_height > right_height)
-	{
-		return (left_height + 1);
-	}
-	else
-	{
-		return (right_height + 1);
-	}
+    /* Recursive case: calculate the height of the right subtree */
+    if (tree->right != NULL)
+        right_height = 1 + binary_tree_height(tree->right);
+    else
+        right_height = 0;
+
+    /* Determine the maximum height between left and right subtrees */
+    if (left_height > right_height)
+        tree_height = left_height;
+    else
+        tree_height = right_height;
+
+    /* Return the calculated height */
+    return (tree_height);
 }
+
