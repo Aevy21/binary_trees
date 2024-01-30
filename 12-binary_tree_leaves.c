@@ -9,18 +9,20 @@
  */
 size_t binary_tree_leaves(const binary_tree_t *tree)
 {
-	/* Base case: if tree is NULL, return 0 */
+	size_t left_side = 0, right_side = 0;
+
 	if (tree == NULL)
 		return (0);
 
-	/* If the node is a leaf (no left or right child), return 1 */
-	if (tree->left == NULL && tree->right == NULL)
+	if (tree->left != NULL)
+		left_side = binary_tree_leaves(tree->left);
+	else
 		return (1);
 
-	/* calculate the number of leaves in the left and right subtrees */
-	size_t left_leaves = binary_tree_leaves(tree->left);
-	size_t right_leaves = binary_tree_leaves(tree->right);
+	if (tree->right != NULL)
+		right_side = binary_tree_leaves(tree->right);
+	else
+		return (1);
 
-	/* Return the total number of leaves*/
-	return (left_leaves + right_leaves);
+	return (left_side + right_side);
 }
