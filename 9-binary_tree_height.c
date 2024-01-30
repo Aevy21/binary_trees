@@ -23,11 +23,9 @@ size_t binary_tree_height(const struct binary_tree_s *tree)
 	right_height = binary_tree_height(tree->right);
 
 	/* Calculate the maximum height between left and right subtrees */
-	if (left_height > right_height)
-		max_height = left_height;
+	if (left_height >= right_height)
+		return (left_height + 1);
 	else
-		max_height = right_height;
+		return (right_height + 1);
 
-	/* Return the maximum height plus 1 for the current node */
-	return (max_height + 1);
 }
