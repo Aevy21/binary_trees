@@ -10,7 +10,7 @@
  */
 size_t binary_tree_height(const struct binary_tree_s *tree)
 {
-	size_t left_height, right_height, max_height;
+	size_t left_height, right_height;
 
 	/* Base case: if tree is NULL, return 0 */
 	if (tree == NULL)
