@@ -15,7 +15,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	height = binary_tree_height(tree);
 
 	/* Calculate the depth of the tree */
-	depth = height - 1;
+	depth = height;
 
 	/* Check if the tree is perfect by comparing depths */
 	return is_perfect_recursive(tree, depth, 0);
