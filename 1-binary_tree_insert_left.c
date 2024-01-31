@@ -11,33 +11,27 @@
  */
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
 {
-	/* Check if parent is NULL */
-	if (parent == NULL)
-		return (NULL);
+    /* Check if parent is NULL */
+    if (parent == NULL)
+        return (NULL);
 
-	/* Allocate memory for the new node */
-	binary_tree_t *new_left_node = malloc(sizeof(binary_tree_t));
+    /* Use binary_tree_node to create a new node */
+    binary_tree_t *new_left_node = binary_tree_node(parent, value);
 
-	/* Check if memory allocation was successful */
-	if (new_left_node == NULL)
-		return (NULL);
+    /* Check if memory allocation was successful */
+    if (new_left_node == NULL)
+        return (NULL);
 
-	/* Initialize the new node with the provided values */
-	new_left_node->n = value;
-	new_left_node->parent = parent;
-	new_left_node->left = NULL;
-	new_left_node->right = NULL;
+    /* If parent already has a left-child, set the new node and update old child */
+    if (parent->left != NULL)
+    {
+        new_left_node->left = parent->left;
+        parent->left->parent = new_left_node;
+    }
 
-	/* If parent already has a left-child, set the new node n update old child */
-	if (parent->left != NULL)
-	{
-		new_left_node->left = parent->left;
-		parent->left->parent = new_left_node;
-	}
+    /* Set the new node as the left-child of the parent */
+    parent->left = new_left_node;
 
-	/* Set the new node as the left-child of the parent */
-	parent->left = new_left_node;
-
-	/* Return a pointer to the created node */
-	return (new_left_node);
+    /* Return a pointer to the created node */
+    return (new_left_node);
 }
