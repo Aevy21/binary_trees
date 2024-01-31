@@ -41,8 +41,9 @@ int is_perfect_recursive(const binary_tree_t *tree, int depth, int level)
 	if (tree == NULL)
 		return (1);
 
-	if ((tree->left == NULL && tree->right != NULL) || (tree->left != NULL && tree->right == NULL))
-		return (0);
+	if ((tree->left == NULL) ^ (tree->right == NULL))
+    		return (0);
+
 
 	/* Check if the current node is a leaf node */
 	if (tree->left == NULL && tree->right == NULL)
